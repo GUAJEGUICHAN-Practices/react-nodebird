@@ -4,8 +4,10 @@ import styled from 'styled-components'
 
 const CardMetaWrapper = styled.div`
     display:flex;
-    flex-direction:row;
-    justify-content:space-between;
+    /* flex-direction:row;
+    justify-content:space-between; */
+    flex-direction: column;
+    gap:10px;
 `
 
 const UserProfile = ({setLoggedIn}) => {
@@ -13,6 +15,7 @@ const UserProfile = ({setLoggedIn}) => {
     const handleLogOut=()=>{
         setLoggedIn(false)
     }
+    
   return (
     <Card
         actions={[
@@ -26,7 +29,11 @@ const UserProfile = ({setLoggedIn}) => {
                 avatar={<Avatar>Tim</Avatar>}
                 title="Timothy"
             /> 
-            <Button onClick={handleLogOut}>로그아웃</Button>
+            <Button 
+                onClick={handleLogOut}
+            >
+                로그아웃
+            </Button>
         </CardMetaWrapper>
     </Card>
   )

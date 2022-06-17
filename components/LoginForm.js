@@ -7,6 +7,9 @@ import styled from 'styled-components'
 const ButtonWrapper = styled.div`
     margin-top: 10px;
 `
+const FormWrapper = styled(Form)`
+    padding: 10px;
+`
 
 const LoginForm = ({setLoggedIn}) => {
     const [id, setId] = useState('')
@@ -29,7 +32,7 @@ const LoginForm = ({setLoggedIn}) => {
     })
 
   return (
-    <Form
+    <FormWrapper
     onFinish={handleFinish}
     >
         <div>
@@ -46,7 +49,7 @@ const LoginForm = ({setLoggedIn}) => {
         </ButtonWrapper>
         <div>
         </div>
-    </Form>
+    </FormWrapper>
   )
 }
 
