@@ -8,7 +8,7 @@ const ButtonWrapper = styled.div`
     margin-top: 10px;
 `
 
-const LoginForm = () => {
+const LoginForm = ({setLoggedIn}) => {
     const [id, setId] = useState('')
     const [password, setPassword] = useState('')
     // const [id, setId] = useState('')
@@ -21,8 +21,17 @@ const LoginForm = () => {
         setPassword(e.target.value)
     },[]);
 
+    const handleFinish = useCallback((e)=>{
+        //e.preventDefault(); antd Form은 해당 함수가 이미 처리되어있다. 
+        console.log(id,password)
+        setLoggedIn(true)
+
+    })
+
   return (
-    <Form>
+    <Form
+    onFinish={handleFinish}
+    >
         <div>
             <label htmlFor="user-id">아이디</label>
             <Input name='user-id' type="text" value={id} onChange={onChangeId} required/>
