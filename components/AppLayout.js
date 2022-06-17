@@ -63,7 +63,7 @@ export const AppLayout = ({children}) => {
             <a
             href="https://velog.io/@qkr135qkr"
             target="_blank" //새 창에서 띄우기
-            rel='noreferrer noopener'
+            rel='noreferrer noopener'//다른페이지에서 누가 열었는지 정보를 없애는 작업이다.
             >
               Made by Timothy
             </a>

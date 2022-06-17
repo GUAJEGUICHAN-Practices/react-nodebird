@@ -10,31 +10,31 @@ const CardMetaWrapper = styled.div`
     gap:10px;
 `
 
-const UserProfile = ({setLoggedIn}) => {
+const UserProfile = ({ setLoggedIn }) => {
 
-    const handleLogOut=()=>{
-        setLoggedIn(false)
-    }
-    
+  const handleLogOut = () => {
+    setLoggedIn(false)
+  }
+
   return (
     <Card
-        actions={[
-            <div key="twit">짹짹<br/>0</div>,
-            <div key="followings">팔로잉<br/>0</div>,
-            <div key="followers">팔로워<br/>0</div>,
-        ]}
+      actions={[
+        <div key="twit">짹짹<br />0</div>,
+        <div key="followings">팔로잉<br />0</div>,
+        <div key="followers">팔로워<br />0</div>,
+      ]}
     >
-        <CardMetaWrapper>
-            <Card.Meta
-                avatar={<Avatar>Tim</Avatar>}
-                title="Timothy"
-            /> 
-            <Button 
-                onClick={handleLogOut}
-            >
-                로그아웃
-            </Button>
-        </CardMetaWrapper>
+      <CardMetaWrapper>
+        <Card.Meta
+          avatar={<Avatar>Tim</Avatar>}
+          title="Timothy"
+        />
+        <Button
+          onClick={handleLogOut}
+        >
+          로그아웃
+        </Button>
+      </CardMetaWrapper>
     </Card>
   )
 }
