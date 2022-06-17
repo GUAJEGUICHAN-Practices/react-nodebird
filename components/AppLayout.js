@@ -5,14 +5,23 @@ import { Menu } from 'antd';
 
 const items=[
   {
-    label: 'Navigation One',
-    key: 'mail',
-    icon: <MailOutlined />,
+    label: '홈으로',
+    key: 'home',
+    // icon: <MailOutlined />,
+  },  {
+    label: '내 정보',
+    key: 'myInfo',
+    // icon: <MailOutlined />,
+  },
+  {
+    label: '회원가입',
+    key: 'signUp',
+    // icon: <MailOutlined />,
   },
 ]
 
 export const AppLayout = ({children}) => {
-  const [current, setCurrent] = useState('mail');
+  const [current, setCurrent] = useState('home');
 
   const onClick = (e) => {
     console.log('click ', e);
@@ -22,9 +31,9 @@ export const AppLayout = ({children}) => {
   return (
     <div>
         <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
-        <Link href="/">홈으로</Link>
+        {/* <Link href="/">홈으로</Link>
         <Link href="/profile">내 정보</Link>
-        <Link href="/signup">회원가입</Link>
+        <Link href="/signup">회원가입</Link> */}
         {children}
     </div>
   )

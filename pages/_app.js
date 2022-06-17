@@ -1,7 +1,12 @@
 import React from 'react'
 import 'antd/dist/antd.css'
-export const App = ({Component}) => {
+const App = ({Component}) => {
   return (
-    <Component/>
+    <>
+        <div>공통메뉴?</div>
+        <Component/>
+    </>
   )
 }
+
+export default App;
