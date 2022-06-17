@@ -3,6 +3,13 @@ import Link from 'next/link'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Input, Menu, Row, Col } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
+import UserProfile from './UserProfile';
+import LoginForm from './LoginForm';
+import styled from 'styled-components';
+
+const SearchInput = styled(Input.Search)`
+  align-self:center;
+`
 
 const items=[
   {
@@ -22,12 +29,13 @@ const items=[
 ]
 
 export const AppLayout = ({children}) => {
-  const [current, setCurrent] = useState('home');
+  const [isLoggedIn, setLoggedIn] = useState(false)
+  // const [current, setCurrent] = useState('home');
 
-  const onClick = (e) => {
-    console.log('click ', e);
-    setCurrent(e.key);
-  };
+  // const onClick = (e) => {
+  //   console.log('click ', e);
+  //   setCurrent(e.key);
+  // };
 
   return (
     <div>
@@ -41,14 +49,15 @@ export const AppLayout = ({children}) => {
           <Menu.Item>
             <Link href="/profile">내 정보</Link>
           </Menu.Item>
-          
           <Menu.Item>
             <Link href="/signup">회원가입</Link>
           </Menu.Item>
-          <Input.Search/>
+          <SearchInput enterButton/>
         </Menu>
         <Row gutter={4}>
-          <Col xs={24} md={6}>왼쪽 메뉴</Col>
+          <Col xs={24} md={6}>
+            {isLoggedIn ? <UserProfile setLoggedIn={setLoggedIn}/> : <LoginForm setLoggedIn={setLoggedIn}/>}
+          </Col>
           <Col xs={24} md={12}>{children}</Col>
           <Col xs={24} md={6}>
             <a
