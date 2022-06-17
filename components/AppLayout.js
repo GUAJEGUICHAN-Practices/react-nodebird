@@ -50,7 +50,15 @@ export const AppLayout = ({children}) => {
         <Row gutter={4}>
           <Col xs={24} md={6}>왼쪽 메뉴</Col>
           <Col xs={24} md={12}>{children}</Col>
-          <Col xs={24} md={6}>오른쪽 메뉴</Col>
+          <Col xs={24} md={6}>
+            <a
+            href="https://velog.io/@qkr135qkr"
+            target="_blank" //새 창에서 띄우기
+            rel='noreferrer noopener'
+            >
+              Made by Timothy
+            </a>
+            </Col>
         </Row>
         {/* {children} */}
     </div>
