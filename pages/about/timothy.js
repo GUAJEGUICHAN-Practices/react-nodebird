@@ -1,7 +1,12 @@
 import React from 'react'
+import { AppLayout } from '../../components/AppLayout'
 
 export default function timothy() {
   return (
-    <div>timothy</div>
+    <>
+      <AppLayout>
+        timothy
+      </AppLayout>
+    </>
   )
 }

@@ -7,7 +7,7 @@ const App = ({Component}) => {
         <Head>
             <meta charSet='utf-8'/>
             <title>
-                Hello Next!
+                NodeBird
             </title>        
         </Head>
         <Component/>
