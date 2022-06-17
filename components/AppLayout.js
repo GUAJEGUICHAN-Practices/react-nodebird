@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Link from 'next/link'
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import { Input, Menu } from 'antd';
+import { Input, Menu, Row, Col } from 'antd';
 import MenuItem from 'antd/lib/menu/MenuItem';
 
 const items=[
@@ -35,7 +35,6 @@ export const AppLayout = ({children}) => {
         <Menu
         mode='horizontal'
         >
-          
           <Menu.Item>
             <Link href="/">홈으로</Link>
           </Menu.Item>
@@ -48,7 +47,12 @@ export const AppLayout = ({children}) => {
           </Menu.Item>
           <Input.Search/>
         </Menu>
-        {children}
+        <Row gutter={4}>
+          <Col xs={24} md={6}>왼쪽 메뉴</Col>
+          <Col xs={24} md={12}>{children}</Col>
+          <Col xs={24} md={6}>오른쪽 메뉴</Col>
+        </Row>
+        {/* {children} */}
     </div>
   )
 }
