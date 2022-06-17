@@ -2,6 +2,11 @@ import { Button, Form } from 'antd'
 import Input from 'antd/lib/input/Input'
 import React, {useState, useCallback} from 'react'
 import Link from 'next/link'
+import styled from 'styled-components'
+
+const ButtonWrapper = styled.div`
+    margin-top: 10px;
+`
 
 const LoginForm = () => {
     const [id, setId] = useState('')
@@ -26,12 +31,11 @@ const LoginForm = () => {
         <label htmlFor="user-password">비밀번호</label>
             <Input name='user-password' type="text" value={password} onChange={onChangePassword} required/>
         </div>
-        <div>
+        <ButtonWrapper>
             <Button type='primary' htmlType='submit' loading={false}>로그인</Button>
             <Link href="signup"><a><Button>회원가입</Button></a></Link>
-        </div>
+        </ButtonWrapper>
         <div>
-            
         </div>
     </Form>
   )
