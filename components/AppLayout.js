@@ -13,34 +13,45 @@ const SearchInput = styled(Input.Search)`
 
 const items=[
   {
-    label: '홈으로',
+    label: (
+      <Link href="/">홈으로</Link>
+    ),
     key: 'home',
     // icon: <MailOutlined />,
   },  {
-    label: '내 정보',
+    label: (
+      <Link href="/profile">내 정보</Link>
+    ),
     key: 'myInfo',
     // icon: <MailOutlined />,
   },
   {
-    label: '회원가입',
+    label: (
+      <Link href="/signup">회원가입</Link>
+    ),
     key: 'signUp',
     // icon: <MailOutlined />,
-  },
+  },{
+    label:(
+      <SearchInput enterButton/>
+    ),
+    key: 'search'
+  }
 ]
 
-export const AppLayout = ({children}) => {
+ const AppLayout = ({children}) => {
   const [isLoggedIn, setLoggedIn] = useState(false)
-  // const [current, setCurrent] = useState('home');
+  const [current, setCurrent] = useState('home');
 
-  // const onClick = (e) => {
-  //   console.log('click ', e);
-  //   setCurrent(e.key);
-  // };
+  const onClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
 
   return (
     <div>
-        {/* <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />; */}
-        <Menu
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+        {/* <Menu
         mode='horizontal'
         >
           <Menu.Item>
@@ -53,7 +64,7 @@ export const AppLayout = ({children}) => {
             <Link href="/signup">회원가입</Link>
           </Menu.Item>
           <SearchInput enterButton/>
-        </Menu>
+        </Menu> */}
         <Row gutter={4}>
           <Col xs={24} md={6}>
             {isLoggedIn ? <UserProfile setLoggedIn={setLoggedIn}/> : <LoginForm setLoggedIn={setLoggedIn}/>}
@@ -73,3 +84,6 @@ export const AppLayout = ({children}) => {
     </div>
   )
 }
+
+
+// export default React.memo(AppLayout,[])
