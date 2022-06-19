@@ -3,32 +3,42 @@ import Input from 'antd/lib/input/Input'
 import React, { useState, useCallback } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
+import useInput from '../hooks/useInput'
 
 const ButtonWrapper = styled.div`
     margin-top: 10px;
-`
+`;
 const FormWrapper = styled(Form)`
     padding: 10px;
-`
+`;
+
+// const ErrorMessgae = styled.div``;
 
 const LoginForm = ({ setLoggedIn }) => {
-  const [id, setId] = useState('')
-  const [password, setPassword] = useState('')
-  // const [id, setId] = useState('')
+  const [id, onChangeId] = useInput('');
+  const [password, onChangePassword] = useInput('')
 
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value)
-  }, []);
+  // const [passwordCheck, setPasswordCheck] = useState('');
+  // const [passwordError, setPasswordError] = useState(false);
 
-  const onChangePassword = useCallback((e) => {
-    setPassword(e.target.value)
-  }, []);
+  // const onChagePasswordCheck = useCallback((e)=>{
+  //   setPasswordCheck(e.target.value);
+  //   setPasswordError(e.target.value !== password);
+  // },[password])
+
+  // const [term, setTerm] = useState('');
+  // const [termError, setTermError] = useState(false);
+  // const onChangeTerm = useCallback((e)=>{
+  //   setTerm(e.target.checked);
+  //   setTermError(false);
+  // },[]);
+
+
 
   const handleFinish = useCallback((e) => {
     //e.preventDefault(); antd Form은 해당 함수가 이미 처리되어있다. 
     console.log(id, password)
     setLoggedIn(true)
-
   })
 
   return (
