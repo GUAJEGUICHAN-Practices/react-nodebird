@@ -10,7 +10,8 @@ const CardMetaWrapper = styled.div`
     gap:10px;
 `
 
-const UserProfile = ({ setLoggedIn }) => {
+
+const UserProfile = ({ setLoggedIn }: any) => {
 
   const handleLogOut = () => {
     setLoggedIn(false)

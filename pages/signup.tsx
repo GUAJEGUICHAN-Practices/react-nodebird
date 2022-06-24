@@ -1,10 +1,11 @@
-import { Form,Checkbox, Button } from 'antd'
+import { Form, Checkbox, Button } from 'antd'
 import Input from 'antd/lib/input/Input'
 import React, { useCallback, useState } from 'react'
 import { AppLayout } from '../components/AppLayout'
 import Head from 'next/head'
 import useInput from '../hooks/useInput'
 import styled from 'styled-components'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 
 const Title = styled.div``
 
@@ -19,30 +20,30 @@ export default function signup() {
 
   const [passwordCheck, setPasswordCheck] = useState('')
   const [passwordError, setPasswordError] = useState(false)
-  const onChagePasswordCheck = useCallback((e) => {
+  const onChagePasswordCheck = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordCheck(e.target.value);
     setPasswordError(password !== e.target.value)
   }, [password])
 
-  const [term,setTerm] = useState(false);
-  const [termError,setTermError] = useState(false);
-  const onChangeTerm = useCallback((e) => {
+  const [term, setTerm] = useState(false);
+  const [termError, setTermError] = useState(false);
+  const onChangeTerm = useCallback((e: CheckboxChangeEvent) => {
     setTerm(e.target.checked);
     console.log(e.target.checked)
     setTermError(false);
-  },[term])
+  }, [term])
 
-  const onSubmit = useCallback((e) => {
+  const onSubmit = useCallback((e: SubmitEvent) => {
     console.log('회원가입 요청')
-    if(password !==passwordCheck){
+    if (password !== passwordCheck) {
       return setPasswordError(true);
     }
     console.log(term)
-    if(!term){
+    if (!term) {
       return setTermError(true);
     }
-    console.log(id, nickname,password)
-  },[password, passwordCheck, term])
+    console.log(id, nickname, password)
+  }, [password, passwordCheck, term])
 
   return (
     <>
@@ -76,7 +77,7 @@ export default function signup() {
             <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>규칙을 준수할 것을 동의합니다.</Checkbox>
             {termError && <ErrorMessgae>약관에 동의해야합니다.</ErrorMessgae>}
           </div>
-          <div style={{marginTop:10}}>
+          <div style={{ marginTop: 10 }}>
             <Button type="primary" htmlType='submit'>가입하기</Button>
           </div>
         </Form>
