@@ -1,9 +1,10 @@
 import { Button, Form, Input } from 'antd'
 
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import { InitialStateProps } from '../store/configureStore';
-import setValue from '../hooks/useInput';
+import { setTagetValue } from '../hooks/useInput';
+import { text } from 'stream/consumers';
 
 const PostForm = () => {
   const { imagePaths } = useSelector((state: InitialStateProps) => (
@@ -12,15 +13,20 @@ const PostForm = () => {
 
   const dispatch = useDispatch()
 
-  // const [text, setText] = useState('');
-  // const onChangeText = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //   setText(e.target.value)
-  // }, [])
-  const [text, setText] = setValue('')
+  const [text, setText, reset] = setTagetValue('')
+
+  const imageInput = useRef<HTMLInputElement>(null)
+
+  const handleImageUpload = useCallback(() => {
+    // imageInput
+    imageInput.current !== null && imageInput.current.click();
+  }, [imageInput.current])
 
   const onSubmit = useCallback(() => {
     // dispatch('')
     console.log('clicked onSubmit')
+    // setText('')
+    reset('')
   }, [])
 
   return (
@@ -38,8 +44,8 @@ const PostForm = () => {
         placeholder='뭔일 있음?'
       />
       <div>
-        <input type='file' multiple hidden />
-        <Button>이미지 업로드</Button>
+        <input type='file' ref={imageInput} multiple hidden />
+        <Button onClick={handleImageUpload}>이미지 업로드</Button>
         <Button type="primary" style={{ float: 'right' }} htmlType='submit'>짹짹</Button>
       </div>
       <div>

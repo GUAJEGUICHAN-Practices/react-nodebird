@@ -3,19 +3,19 @@ import Input from 'antd/lib/input/Input'
 import React, { useState, useCallback } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import useInput from '../hooks/useInput'
+import { setTagetValue } from '../hooks/useInput'
 
 const ButtonWrapper = styled.div`
     margin-top: 10px;
 `;
+
 const FormWrapper = styled(Form)`
     padding: 10px;
 `;
 
 const LoginForm = ({ setLoggedIn }: any) => {
-  const [id, onChangeId] = useInput('');
-  const [password, onChangePassword] = useInput('')
-
+  const [id, onChangeId] = setTagetValue('');
+  const [password, onChangePassword] = setTagetValue('')
 
   const handleFinish = useCallback((e: any) => {
     //e.preventDefault(); antd Form은 해당 함수가 이미 처리되어있다. 
