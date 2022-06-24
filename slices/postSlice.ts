@@ -21,7 +21,7 @@ export type PostInitialStateProps = {
 }
 
 const dummyPost = {
-  id: 0,
+  id: new Date().getTime(),
   User: {
     id: 1,
     nickname: 'dummy'
@@ -77,12 +77,17 @@ export const { actions, reducer } = createSlice({
     addPost: (state, { payload }) => ({
       ...state,
       mainPosts: [
-        dummyPost,
+        {
+          ...dummyPost,
+          id: new Date().getTime()
+        },
         ...state.mainPosts,
       ],
       postAdded: true
     })
   }
 });
+
+export const { addPost } = actions
 
 export default reducer;

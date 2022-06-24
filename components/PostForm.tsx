@@ -5,6 +5,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import { InitialStateProps } from '../store/configureStore';
 import { setTagetValue } from '../hooks/useInput';
 import { text } from 'stream/consumers';
+import { addPost } from '../slices/postSlice';
 
 const PostForm = () => {
   const { imagePaths } = useSelector((state: InitialStateProps) => (
@@ -23,7 +24,7 @@ const PostForm = () => {
   }, [imageInput.current])
 
   const onSubmit = useCallback(() => {
-    // dispatch('')
+    dispatch(addPost())
     console.log('clicked onSubmit')
     // setText('')
     reset('')
